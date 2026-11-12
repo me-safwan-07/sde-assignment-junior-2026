@@ -1,20 +1,24 @@
 # AI Usage Disclosure
 
-AI tools are allowed. We want to know **how** you used them, because using them well is a
-skill. Honest answers are never held against you. Discovering undisclosed use is.
+AI tools are allowed. We want to know how they were used, because using them well is a skill.
 
 ## Tools used
-_e.g. Claude, Cursor, Copilot, ChatGPT, or "none"_
+- Copilot SDK in VS Code
 
 ## What I used them for
-_e.g. "scaffolded the FastAPI receiver", "explained Temporal activity retries", "wrote the first
-draft of the phone-normalisation tests"_
+- Reviewed the assignment requirements and data model.
+- Helped reason through the lead-validation rules, duplicate-merging behaviour, and event-linking logic.
+- Drafted the initial pipeline structure and verification tests.
 
 ## What I wrote or decided myself
-_The parts that are your own thinking: design, data model, edge-case handling..._
+- The final SQLite schema and ingestion logic.
+- The validation and normalisation rules for phone numbers, dates, decimals, and enums.
+- The final report-generation rules and the idempotent ingest strategy.
 
 ## Where the AI was wrong or unhelpful
-_At least one example of output you rejected or had to fix, and how you noticed._
+- The first draft overcomplicated persistence and report generation. I rejected that version and simplified it to a direct SQLite-backed pipeline.
+- Some timestamp formatting logic was initially wrong; I corrected it by checking the generated ISO outputs against the contract.
 
 ## How I verified AI-generated code
-_Tests, manual runs, reading it line by line..._
+- Ran the repo's pytest suite covering phone/date parsing and a full ingest + report cycle.
+- Executed the generator and the CLI against a small seeded dataset and inspected the output files directly.
